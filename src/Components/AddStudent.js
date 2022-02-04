@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import StudentService from '../Services/StudentService';
+import $ from 'jquery';
 function AddStudent() {
   const id1 = useParams().id;
   console.log(useParams().id);
@@ -28,6 +29,8 @@ function AddStudent() {
   const [gender, setGender] = useState('');
   const [id, setId] = useState('');
   useEffect(() => {
+    $("#messagedivclass").hide();
+    
     if (id1 != null) {
       updateData();
       setHeadingVariable("Edit Student");
@@ -36,10 +39,14 @@ function AddStudent() {
     e.preventDefault();
     const student = { id, name, address, age, gender };
     StudentService.create(student)
-      .then(response => { alert(response.data.message); },)
+      .then(response => { $("#messagedivclass").show().delay(3000).fadeOut(); $("#messagedivclass").html(response.data.message).delay(3000).fadeOut();window.location.reload()})
+      
   }
   return <>
     <div className='container'>
+	  <div class="alert alert-success alert-dismissible fade show" role="alert" style={{ 'margin-top': '80px', 'text-align': 'center', 'margin-bottom': '-72px' }} id="messagedivclass">
+    <button type="button" class="btn-close" data-bs-dismiss="alert" style={{ 'margin-top': '80px', 'text-align': 'center', 'margin-bottom': '-72px' }} aria-label="Close"></button>
+		  </div>
       <h2 style={{ 'margin-top': '100px', 'text-align': 'center', 'margin-bottom': '-72px' }}>{headingVariable}</h2>
       <form style={{ margin: '100px' }}>
         <div>
@@ -65,7 +72,7 @@ function AddStudent() {
             Female
           </label>
           <div >
-            <button onClick={(e) => saveStudent(e)} className="btn btn-primary">Save</button>
+            <button onClick={(e) => saveStudent(e)} className="btn btn-success">Save</button>
           </div>
         </div>
       </form>

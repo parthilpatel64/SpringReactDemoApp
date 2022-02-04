@@ -8,10 +8,10 @@ import {
 import { useContext } from 'react';
 import Navbar from './Components/Navbar';
 import Home from './Components/Home';
-import About from './Components/About';
-import NoteState from './Contexts/noteState';
+
+
 import AddStudent from './Components/AddStudent';
-import NoteContext from './Contexts/noteContext';
+
 
 
 function App(){
@@ -22,7 +22,7 @@ function App(){
     return (
       <>
      
-       <NoteState>
+       
        <Router>
        
          
@@ -38,7 +38,7 @@ function App(){
         
        </Router>
        
-       </NoteState>
+       
      
        </>
         
