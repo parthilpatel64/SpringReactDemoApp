@@ -55,6 +55,7 @@ function Home() {
           <th>Id</th>
           <th>Name</th>
           <th>Address</th>
+          <th>Age</th>
           <th>gender</th>
           <th>Edit</th>
           <th>Delete</th>
@@ -64,6 +65,7 @@ function Home() {
             <td>{item.id}</td>
             <td>{item.name}</td>
             <td>{item.address}</td>
+            <td>{item.age}</td>
             <td>{item.gender}</td>
             <td><button type="button" class="btn btn-primary"><Link to={`/editStudent/${item.id}`} style={{color:"black"}}>edit</Link></button></td>
             <td><button type="button" class="btn btn-danger"><Link to="/deleteStudent" onClick={() => { if(window.confirm('Delete the Student?')) {deleteData(item.id);} }} style={{color:"black"}}>delete</Link></button></td>
