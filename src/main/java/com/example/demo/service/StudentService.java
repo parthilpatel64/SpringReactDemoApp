@@ -16,46 +16,35 @@ import com.example.demo.model.Response;
 import com.example.demo.model.Student;
 import com.example.demo.repo.StudentRepo;
 
-
-
 @Service
 public class StudentService {
 
-	
-	
 	@Autowired
 	private StudentRepo studentRepo;
-	
+
 	@Autowired
 	private MessageSource messageSource;
-	
+
 	public ResponseEntity<Response> saveStudent(Student student) {
 		ResponseEntity<Response> responseEntity = null;
 		try {
 			if (student.getId() == null) {
-			
-			
 				studentRepo.save(student);
-					
-				
-					responseEntity = new ResponseEntity<Response>(new Response(true,
-							messageSource.getMessage("ADD_STUDENT_SUCCESS", null, LocaleContextHolder.getLocale()), 
-							null, null), HttpStatus.OK);
-				
+				responseEntity = new ResponseEntity<Response>(new Response(true,
+						messageSource.getMessage("ADD_STUDENT_SUCCESS", null, LocaleContextHolder.getLocale()), null,
+						null), HttpStatus.OK);
 			} else {
-				
-					student.setId(student.getId());
-					studentRepo.save(student);
-					responseEntity = new ResponseEntity<Response>(new Response(true,
-							messageSource.getMessage("UPDATE_STUDENT_SUCCESS", null, LocaleContextHolder.getLocale()),
-							null,  null), HttpStatus.OK);
-				
+				student.setId(student.getId());
+				studentRepo.save(student);
+				responseEntity = new ResponseEntity<Response>(new Response(true,
+						messageSource.getMessage("UPDATE_STUDENT_SUCCESS", null, LocaleContextHolder.getLocale()), null,
+						null), HttpStatus.OK);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			responseEntity = new ResponseEntity<Response>(new Response(true,
-					messageSource.getMessage("ADD_STUDENT_FAILED", null, LocaleContextHolder.getLocale()), null,
-					null), HttpStatus.OK);
+					messageSource.getMessage("ADD_STUDENT_FAILED", null, LocaleContextHolder.getLocale()), null, null),
+					HttpStatus.OK);
 		}
 		return responseEntity;
 	}
@@ -83,13 +72,13 @@ public class StudentService {
 		try {
 			Optional<Student> u = studentRepo.findById(studentId);
 			responseEntity = new ResponseEntity<Response>(new Response(true,
-					messageSource.getMessage("SHOW_EDIT_STUDENT_SUCCESS", null, LocaleContextHolder.getLocale()),u,
+					messageSource.getMessage("SHOW_EDIT_STUDENT_SUCCESS", null, LocaleContextHolder.getLocale()), u,
 					null), HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();
 			responseEntity = new ResponseEntity<Response>(new Response(true,
-					messageSource.getMessage("SHOW_EDIT_STUDENT_FAILED", null, LocaleContextHolder.getLocale()),
-					null, studentList), HttpStatus.OK);
+					messageSource.getMessage("SHOW_EDIT_STUDENT_FAILED", null, LocaleContextHolder.getLocale()), null,
+					studentList), HttpStatus.OK);
 		}
 		return responseEntity;
 	}

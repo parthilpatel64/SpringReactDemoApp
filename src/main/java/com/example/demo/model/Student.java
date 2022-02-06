@@ -10,23 +10,23 @@ import javax.persistence.Table;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 
 @Entity
-@Table(name="Student")
+@Table(name = "Student")
 public class Student {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="studentId")
+	@Column(name = "studentId")
 	private Integer id;
-	
-	@Column(name="studentName")
+
+	@Column(name = "studentName")
 	private String name;
-	
-	@Column(name="age")
+
+	@Column(name = "age")
 	private int age;
-	
-	@Column(name="address")
+
+	@Column(name = "address")
 	private String address;
-	
-	@Column(name="gender")
+
+	@Column(name = "gender")
 	private String gender;
 
 	public Integer getId() {
@@ -68,7 +68,5 @@ public class Student {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-	
-	
-	
+
 }
