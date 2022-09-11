@@ -43,6 +43,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ],
-    "proxy": "http://localhost:8080/student"
+    "proxy": "http://192.168.1.4:8080/student"
   }
 }
