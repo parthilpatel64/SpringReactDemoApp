@@ -33,7 +33,7 @@ public class StudentController {
 	@PostMapping(path = "/addStudent")
 	public ResponseEntity<Response> saveStudent(@RequestBody Student student) {
 		ResponseEntity<Response> responseEntity = null;
-		try {
+		try {  
 			responseEntity = studentService.saveStudent(student);
 		} catch (Exception e) {
 			e.printStackTrace();
