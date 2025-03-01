@@ -25,7 +25,7 @@ jobs:
      - name: Build the application
        run: |
          mvn clean
-         mvn -B packages --file pom.xml
+         mvn -B package --file pom.xml
 	 
 	   
 	   
