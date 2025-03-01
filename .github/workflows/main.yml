@@ -1,0 +1,32 @@
+name: Build & Deploy Spring boot app
+
+on:
+ push:
+  branches:
+    - SpringBootCode
+
+jobs:
+ build-deploy:
+   name: Build and deploy Spring boot for begineer
+   runs-on: ubuntu-lates
+   steps:
+     - name: Checkout code
+       uses: actions/checkout@v3
+       
+     - name: Setup JDK 17
+       uses: actions/setup-java@v3
+       with:
+        distribution: 'corrento'
+        java-version: 17  
+        
+     - name: Unit Tests
+       run: mvn -B test --file pom.xml
+       
+     - name: Build the application
+       run: |
+         mvn clean
+         mvn -B packages --file pom.xml
+	 
+	   
+	   
+	  
