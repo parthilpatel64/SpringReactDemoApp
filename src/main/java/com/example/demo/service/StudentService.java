@@ -27,7 +27,7 @@ public class StudentService {
 
 	public ResponseEntity<Response> saveStudent(Student student) {
 		ResponseEntity<Response> responseEntity = null;
-		try {
+		try { 
 			if (student.getId() == null) {
 				studentRepo.save(student);
 				responseEntity = new ResponseEntity<Response>(new Response(true,
